@@ -45,14 +45,14 @@ namespace Todo.Controllers
         }
         [HttpPut("Updated/{id}")]
         public async Task<IActionResult> UpdateTodoAsync(
-            [FromBody] Guid id,
+            [FromRoute] Guid id,
             UpdateTodoDto newTodo)
         {
             return Ok(await service.UpdateTodoAsync(id, newTodo));
         }
 
         [HttpDelete("Delete/{id}")]
-        public async Task<IActionResult> DeleteTodoAsync([FromBody] Guid id)
+        public async Task<IActionResult> DeleteTodoAsync([FromRoute] Guid id)
             => Ok(await service?.DeleteTodoAsync(id));
     }
 }
